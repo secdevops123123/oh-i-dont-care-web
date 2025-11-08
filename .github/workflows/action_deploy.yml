@@ -34,10 +34,10 @@ jobs:
         perl -i -pe 's/(STDIO2025_\d+)\{([0-9A-Fa-f]{3})([0-9A-Fa-f]+)\}/$1."{".$2.("X"x length($3))."}"/ge' flag.txt
 
     # # Deploy to S3 bucket - directly sync the repository contents
-    # - name: Deploy to S3
-    #   run: |
-    #     aws s3 sync ./ s3://oh-i-dont-care/ \
-    #       --delete \
-    #       --exclude ".git/*" \
-    #       --exclude ".github/*" \
-    #       --exclude "README.md" 
+    - name: Deploy to S3
+      run: |
+        aws s3 sync ./ s3://oh-i-dont-care/ \
+          --delete \
+          --exclude ".git/*" \
+          --exclude ".github/*" \
+          --exclude "README.md" 
